@@ -1,5 +1,7 @@
 from flask.ext.script import Manager
 
+from gpgcom.main import app
+
 
 manager = Manager(app)
 
