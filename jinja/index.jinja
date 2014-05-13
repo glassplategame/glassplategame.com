@@ -1,8 +1,15 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Glass Plate Game</title>
+  {% assets "css_public" %}
+  <link href="{{ ASSET_URL }}" type="text/css" rel="stylesheet" />
+  {% endassets %}
 </head>
 <body>
   
+  {% assets "js_public" %}
+  <script src="{{ ASSET_URL }}" type="text/javascript"></script>
+  {% endassets %}  
 </body>
 </html>
