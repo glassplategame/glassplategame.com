@@ -1,1 +1,1 @@
-# Glass Plate Game consumer site
+# Glass Plate Game site
