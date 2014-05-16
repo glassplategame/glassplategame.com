@@ -1,3 +1,97 @@
 body {
+    margin: 0;
     background: #01152E;
+}                                                                                 
+
+
+.gpg-red-box {
+    background: #890303;
+    color:#eee;
+    border-bottom: 5px solid #460202;
+    border-right: 5px solid #640202;
+    border-left: 5px solid #9f3537;
+}
+.page-box {
+    background: #E4E3AF;
+    border: 3px solid #890303;
+    padding: 10px 10px 30px;
+    border-radius: 2px;
+}
+
+
+/** Header **/
+#header h1 {
+    margin-bottom: 0;
+}
+#header .gpg-red-box {
+
+}
+
+#wrapper {
+    background-color: #036a0f;
+    background-image: url('/static/images/static_bk.png');
+    border:10px solid #000;
+    border-top: none;
+    border-bottom: 40px solid #000;
+    border-radius: 0 0 6px 6px;
+}
+#main {
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+#menu {
+    padding-left: 0;
+}
+#menu .nav {
+    background: #000;
+    border-radius: 0 3px 3px 0;
+}
+
+#menu .nav a {
+    color: #eee;
+    font-weight: bold;
+    transition: all 0.5s;
+}
+
+#menu .nav a:hover {
+    color: #FC0;
+    background: #000;
+}
+
+
+.next-page {
+    padding-right: 20%;
+    text-align: right;
+}
+
+.home-img {
+    float: left;
+    margin-right: 13px;
+}
+
+.button {
+    border-top: 5px solid #aaa;
+    border-left: 5px solid #666;
+    border-right: 5px solid #111;
+    border-bottom: 5px solid #000;
+    background: #000;
+    color: #eee;
+    padding: 5px 8px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.button:hover,
+.button:active,
+.button:focus {
+    border-bottom: 5px solid #aaa;
+    border-right: 5px solid #666;
+    border-left: 5px solid #111;
+    border-top: 5px solid #000;
+    color: #eee;
+    text-decoration: none;
+}
+
+.button strong {
+    color: gold;
 }
