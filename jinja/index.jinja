@@ -7,14 +7,64 @@
   {% endassets %}
 </head>
 <body>
-  <div class="container">
+  <div id="wrapper" class="container">
     <div id="header" class="row">
       <div class="gpg-red-box col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-1 text-right">
         <h1>Glass Plate Game</h1>
         <div>A Cooperative Thinking Game</div>
       </div>
     </div>
-    <div id="pages"></div>
+    <div id="main" class="row">
+      <div id="menu" class="col-lg-3 col-md-3">
+        <ul class="nav">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About the Game</a>
+          </li>
+          <li>
+            <a href="/playing_the_game">Playing the Game</a>
+          </li>
+          <li>
+            <a href="/current_playing">Current Playing</a>
+          </li>
+          <li>
+            <a href="/cards">Cards</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li>
+            <a href="/link">Links</a>
+          </li>
+        </ul>
+      </div>
+      <div id="pages" class="row col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-1">
+        <div id="home" class="page">
+          <div class="page-box">
+            <h1 class="text-center">A Cooperative Thinking Game</h1>
+            <div>
+              <img src="/static/images/home_img.jpg" class="home-img" />
+              The Glass Plate Game is basically a conversation in the trappings of a board game. 
+              Adrian Wolfe and I, Dunbar Aitkins, designed it following a class I instigated in 1976. 
+              Pieces are used to map, against a mosaic, the conversation as players find and discuss 
+              connections between ideas represented by various regions of the mosaic. In the sets 
+              there are "idea cards" for composing the mosaic, then numbered cubes and colored 
+              transparencies for pieces tracking the conversation.
+              <div class="next-page">
+                <a class="button" href="/"><strong>Next:</strong> Playing the Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="about" class="page"></div>
+        <div id="playing_the_game" class="page"></div>
+        <div id="cards" class="page"></div>
+        <div id="contact" class="page"></div>
+        <div id="links" class="page"></div>
+      </div>
+    </div>
     <div id="footer"></div>
   </div>
   {% assets "js_public" %}
