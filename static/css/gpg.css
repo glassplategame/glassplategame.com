@@ -11,6 +11,9 @@ body {
     border-right: 5px solid #640202;
     border-left: 5px solid #9f3537;
 }
+.page {
+    display: none;
+}
 .page-box {
     background: #E4E3AF;
     border: 3px solid #890303;
