@@ -62,6 +62,20 @@ body {
 }
 
 
+.dropdown > ul {
+    position: absolute;
+    left: 200px;
+    z-index: 1;
+    top: 13px;
+    border: 1px solid #333;
+    display: none;
+}
+.dropdown:hover > ul{
+   display: block; 
+}
+.dropdown a {
+    white-space: nowrap;
+}
 .next-page {
     padding-right: 20%;
     text-align: right;
