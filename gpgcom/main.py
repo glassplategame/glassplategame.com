@@ -33,6 +33,14 @@ assets.register('css_public', css_public)
 assets.register('js_admin', js_admin)
 assets.register('css_admin', css_admin)
 
+@app.template_global()
+def get_page_div(page, request_page, *args):
+    """Creates a div element for a page and sets the requested page visible""" 
+    classes = "".join([arg for arg in args])
+    params = (page, classes)
+    params += ('style="display:block"',) if request_page == page else ('',)
+    return '<div id="%s" class="page %s" %s>' % params
+
 @app.route('/')
 @app.route('/<path:path>')
 def index(path=None):
