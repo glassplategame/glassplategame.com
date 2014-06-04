@@ -53,7 +53,7 @@ def index(path=None):
         return facebook.scrape(path)
 
     # These pages require loading something
-    pages = ['about', 'playing', 'current', 'cards', 'contact', 'links']
+    pages = ['about', 'playing_the_game', 'current_playing', 'cards', 'contact', 'links']
 
     # Public template variables
     jinja_var = dict(
