@@ -58,13 +58,19 @@ body {
     list-style-type: none; 
 }
 
-#menu .nav a {
+#menu ul a,
+#menu ul a:focus,
+#menu ul a:active {
     color: #eee;
     font-weight: bold;
     transition: all 0.5s;
+    outline: none;
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
 }
 
-#menu .nav a:hover {
+#menu ul a:hover {
     color: #FC0;
     background: #000;
 }
