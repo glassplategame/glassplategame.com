@@ -29,6 +29,11 @@ body {
 #header .gpg-red-box {
 
 }
+#header img {
+    position: absolute;
+    left: 0px;
+    height: 165px;
+}
 
 #wrapper {
     background-color: #036a0f;
