@@ -52,8 +52,15 @@ def index(path=None):
         '_debug_facebook_scrape_' in request.args):
         return facebook.scrape(path)
 
+    pages = ['about', 
+             'playing_the_game', 
+             'current_playing', 
+             'cards', 
+             'contact', 
+             'links' ]
+
     # These pages require loading something
-    pages = ['about', 'playing_the_game', 'current_playing', 'cards', 'contact', 'links']
+    ajax_pages = []
 
     # Public template variables
     jinja_var = dict(
