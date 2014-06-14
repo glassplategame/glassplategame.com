@@ -2,9 +2,12 @@
     var $pages = {};
     var pages = [
         'home', 
-        'about', 
-        'hesse', 
         'playing_the_game', 
+        'rules',
+        'connections',
+        'about', 
+        'history',
+        'hesse', 
         'current_playing', 
         'cards', 
         'contact', 
