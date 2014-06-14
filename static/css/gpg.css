@@ -70,7 +70,10 @@ body {
     text-decoration: none;
 }
 
-#menu ul a:hover {
+#menu ul a:hover,
+#menu .active > a,
+#menu .active > a:focus,
+#menu .active > a:active {
     color: #FC0;
     background: #000;
 }
