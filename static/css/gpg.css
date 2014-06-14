@@ -51,9 +51,11 @@ body {
     padding-left: 0;
     padding-top: 80px;
 }
-#menu .nav {
+#menu ul {
     background: #000;
     border-radius: 0 3px 3px 0;
+    padding: 0;
+    list-style-type: none; 
 }
 
 #menu .nav a {
