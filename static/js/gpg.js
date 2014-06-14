@@ -40,7 +40,8 @@
         $page.hide();
         $navbar_li.removeClass('active');
         $pages[id].show();
-        $('a[href="/' + id + '"]', $navbar_li).parent().addClass('active');
+        var linkurl = id === 'home' ? '' : id;
+        $('a[href="/' + linkurl + '"]', $navbar_li).parent().addClass('active');
         $document.trigger('set-page-' + id)
     }
-})($(document), $('.page'), $('.navbar li'));
+})($(document), $('.page'), $('#menu li'));
