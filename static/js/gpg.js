@@ -44,4 +44,11 @@
         $('a[href="/' + linkurl + '"]', $navbar_li).parent().addClass('active');
         $document.trigger('set-page-' + id)
     }
+
+    $('.card').hover(function() {
+        $(this).append('<strong>' + $(this).attr('title') + '</strong>').find('img').hide();
+    }, function() {
+        $(this).find('img').show().siblings('strong').remove();
+
+    });
 })($(document), $('.page'), $('#menu li'));
