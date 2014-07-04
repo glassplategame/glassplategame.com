@@ -9,6 +9,7 @@ from gpgcom.assets import js_public, css_public, js_admin, css_admin
 from gpgcom.controllers import site
 
 
+# Create Flask Instance
 app = Flask(__name__, static_folder='../static', template_folder='../jinja')
 
 # Load controllers
@@ -23,6 +24,7 @@ FlaskSpirits(app, email_on_error=app.config['MAIL_ERROR'])
 # Debug toolbar
 toolbar = DebugToolbarExtension(app)
 
+# Set up CSRF protection
 csrf = CsrfProtect()
 csrf.init_app(app)
 
@@ -47,6 +49,7 @@ def index(path=None):
     """Main controller of website"""
 
     path = path.split('/') if path else ['home']
+
     # Facebook Scraper
     if (request.user_agent.string.lower().find('facebookexternalhit') > -1 or
         '_debug_facebook_scrape_' in request.args):
