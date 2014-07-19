@@ -135,6 +135,15 @@ body {
     padding: 7px;
     margin: 5px;
     background: #fff;
+    height: 95px;
+    width: 95px;
+    vertical-align: top;
+}
+.card strong {
+    display: block;
+    word-break: break-word;
+    white-space: pre-wrap;
+    font-size: 13px;
 }
 .card img {
     height: 75px;
