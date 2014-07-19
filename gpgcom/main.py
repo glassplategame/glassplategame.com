@@ -3,7 +3,9 @@ from flask import g, Flask, render_template, session, request, redirect, \
 from flask.ext.assets import Environment
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf.csrf import CsrfProtect
+
 from flask_spirits import FlaskSpirits
+from flask_spirits.controllers import user
 
 from gpgcom.assets import js_public, css_public, js_admin, css_admin
 from gpgcom.controllers import site
@@ -12,14 +14,15 @@ from gpgcom.controllers import site
 # Create Flask Instance
 app = Flask(__name__, static_folder='../static', template_folder='../jinja')
 
-# Load controllers
-app.register_blueprint(site.bp, url_prefix='/api')
-
 # Configure App
 app.config.from_object('config')
 app.secret_key = app.config['SECRET_KEY']
 
 FlaskSpirits(app, email_on_error=app.config['MAIL_ERROR'])
+
+# Load controllers
+app.register_blueprint(site.bp, url_prefix='/api')
+app.register_blueprint(user.bp)
 
 # Debug toolbar
 toolbar = DebugToolbarExtension(app)
@@ -37,7 +40,7 @@ assets.register('css_admin', css_admin)
 
 @app.template_global()
 def get_page_div(page, request_page, *args):
-    """Creates a div element for a page and sets the requested page visible""" 
+    'Creates a div element for a page and sets the requested page visible' 
     classes = "".join([arg for arg in args])
     params = (page, classes)
     params += ('style="display:block"',) if request_page == page else ('',)
@@ -46,7 +49,7 @@ def get_page_div(page, request_page, *args):
 @app.route('/')
 @app.route('/<path:path>')
 def index(path=None):
-    """Main controller of website"""
+    'Main controller of website'
 
     path = path.split('/') if path else ['home']
 
@@ -70,3 +73,4 @@ def index(path=None):
         page=path[0] if path[0] in pages else 'home')
 
     return render_template('index.jinja', **jinja_var)
+
