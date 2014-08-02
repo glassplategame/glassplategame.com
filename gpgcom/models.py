@@ -4,8 +4,8 @@ from sqlalchemy import Column, DateTime, Integer, String, Boolean
 from flask_spirits.database import Model
 
 
-class Playing(Model):
-    __tablename__ = 'playing'
+class Game(Model):
+    __tablename__ = 'game'
     id = Column(Integer, primary_key=True)
     title = Column(String)
     theme = Column(String)
