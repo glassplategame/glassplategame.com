@@ -46,7 +46,7 @@
     }
 
     $('.card').hover(function() {
-        $(this).append('<strong>' + $(this).attr('title') + '</strong>').find('img').hide();
+        $(this).append('<strong>' + $(this).data('card') + '</strong>').find('img').hide();
     }, function() {
         $(this).find('img').show().siblings('strong').remove();
 
