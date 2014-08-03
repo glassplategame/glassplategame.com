@@ -4,7 +4,7 @@ from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
 
 from flask_spirits.database import Model
-from gpgcom.models import Playing
+from gpgcom.models import Game
 
 from config import DATABASE_URL
 
