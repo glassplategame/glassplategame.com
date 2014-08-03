@@ -1,0 +1,10 @@
+{% extends "spirits/modal.jinja" %}
+{% from "spirits/form.jinja" import render_form %}
+{% block modal_id %}event{% endblock %}
+{% block modal_title %}Event{% endblock %}
+
+{% block modal_dialog %}<form action="/admin/submit/game" class="form-horizontal" role="form" data-ajax="event" data-load="/admin/load/game">{{ super() }}</form>{% endblock %}
+
+{% block modal_body %}
+    {{ render_form(game_form) }}
+{% endblock %}
