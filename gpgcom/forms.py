@@ -1,7 +1,10 @@
 from wtforms.form import Form
 from wtforms_alchemy import ModelForm
 
+from gpgcom.models import Game
 
-class PlayingForm(ModelForm):
+
+class GameForm(ModelForm):
     class Meta:
-        model = Playing
+        model = Game
+        exclude = ['updated_at']
