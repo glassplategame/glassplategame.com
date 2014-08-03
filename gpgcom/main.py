@@ -9,6 +9,7 @@ from flask_spirits.controllers import user
 
 from gpgcom.assets import js_public, css_public, js_admin, css_admin
 from gpgcom.controllers import site
+from gpgcom.forms import GameForm
 
 
 # Create Flask Instance
@@ -70,7 +71,8 @@ def index(path=None):
 
     # Public template variables
     jinja_var = dict(
-        page=path[0] if path[0] in pages else 'home')
+        page=path[0] if path[0] in pages else 'home',
+        game_form=GameForm(prefix='game'))
 
     return render_template('index.jinja', **jinja_var)
 
