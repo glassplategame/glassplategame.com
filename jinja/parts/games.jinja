@@ -1,0 +1,24 @@
+{% if games %}
+    {% for game in games %}
+        <div class="game">
+            {% if current_user.is_authenticated() %}
+                <div class="text-right">
+                    <div class="btn btn-primary">Edit Game</div>
+                </div>
+            {% endif %}
+            <div>{% if game.location_one %}{{ game.location_one }},{% endif %} {{ game.start.strftime('') }}</div>
+            <div>{{ game.start.strftime('') }}{% if game.location_two %}, {{ location_two }}{% endif %}</div> 
+            {% if game.title %}
+                <div><strong>Title: </strong> {{ game.title }}</div>
+            {% endif %}
+            {% if game.theme %}
+                <div><strong>Theme: </strong> {{ game.theme }} </div>
+            {% endif %}
+            {% if game.description %}
+                <div><strong>Description: </strong> {{ game.description }}</div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <p class="no-games">There are no upcoming games listed at this time.</p>
+{% endif %}
