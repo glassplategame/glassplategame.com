@@ -1,15 +1,18 @@
 from flask import g, Flask, render_template, session, request, redirect, \
     current_app, flash, url_for, abort, Markup
 from flask.ext.assets import Environment
+from flask.ext.restless import APIManager
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf.csrf import CsrfProtect
 
 from flask_spirits import FlaskSpirits
 from flask_spirits.controllers import user
+from flask_spirits.database import session as db_session
 
 from gpgcom.assets import js_public, css_public, js_admin, css_admin
-from gpgcom.controllers import site
+from gpgcom.controllers import admin
 from gpgcom.forms import GameForm
+from gpgcom.models import Game
 
 
 # Create Flask Instance
@@ -38,6 +41,9 @@ assets.register('js_public', js_public)
 assets.register('css_public', css_public)
 assets.register('js_admin', js_admin)
 assets.register('css_admin', css_admin)
+
+restless = APIManager(app, session=db_session)
+restless.create_api(Game, methods=['GET', 'POST', 'DELETE'])
 
 @app.template_global()
 def get_page_div(page, request_page, *args):
