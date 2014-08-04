@@ -25,7 +25,6 @@ app.secret_key = app.config['SECRET_KEY']
 FlaskSpirits(app, email_on_error=app.config['MAIL_ERROR'])
 
 # Load controllers
-app.register_blueprint(site.bp, url_prefix='/api')
 app.register_blueprint(user.bp)
 
 # Debug toolbar
