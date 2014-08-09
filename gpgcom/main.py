@@ -77,7 +77,7 @@ def index(path=None):
     # Public template variables
     jinja_var = dict(
         page=path[0] if path[0] in pages else 'home',
-        game_form=GameForm(prefix='game'))
+        game_form=GameForm(prefix='game'),
+        games=Game.all())
 
     return render_template('index.jinja', **jinja_var)
-
