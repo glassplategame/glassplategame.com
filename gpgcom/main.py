@@ -42,7 +42,7 @@ assets.register('js_admin', js_admin)
 assets.register('css_admin', css_admin)
 
 restless = APIManager(app, session=db_session)
-restless.create_api(Game, methods=['GET', 'POST', 'DELETE'])
+restless.create_api(Game, methods=['GET', 'POST', 'DELETE', 'PATCH'])
 
 @app.template_global()
 def get_page_div(page, request_page, *args):
