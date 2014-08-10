@@ -17,6 +17,14 @@ class Game(Model):
     created_at = Column(DateTime, default=dt.datetime.now)
     updated_at = Column(DateTime)
 
+    def __repr__(self):
+        return self.start.strftime('')
+
+    def format_start_time(self):
+        if self.start.minute > 0:
+            return self.start.strftime('%I:%M%p').lower()
+        return self.start.strftime('%I%p').lower()
+
     @classmethod
     def current_playings(cls):
         tomorrow = dt.datetime.now() + dt.timedelta(days=1)
