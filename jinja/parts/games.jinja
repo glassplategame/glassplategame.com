@@ -3,7 +3,7 @@
         <div class="game">
             {% if current_user.is_authenticated() %}
                 <div class="text-right">
-                    <div class="btn btn-primary">Edit Game</div>
+                    <div class="btn btn-primary" data-api-edit="game" data-id="{{ game.id }}">Edit Game</div>
                 </div>
             {% endif %}
             <div>{% if game.location_one %}{{ game.location_one }},{% endif %} {{ game.start.strftime('') }}</div>
