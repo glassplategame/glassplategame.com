@@ -12,7 +12,7 @@ class Game(Model):
     description = Column(Text, info={'label': 'Description'})
     start = Column(DateTime, nullable=False, info={'label': 'Start'})
     end = Column(DateTime, info={'label': 'End (optional)'})
-    location_one = Column(String, info={'label': 'Location One'})
+    location_one = Column(String, nullable=False, info={'label': 'Location One'})
     location_two = Column(String, info={'label': 'Location Two'})
     created_at = Column(DateTime, default=dt.datetime.now)
     updated_at = Column(DateTime)
