@@ -51,4 +51,11 @@
         $(this).find('img').show().siblings('strong').remove();
 
     });
+
+    $('[data-api=game]').on('api-deleted', function(e, id) {
+        $('[data-id=' + id + ']').parents('.game').fadeOut(function() {
+            $(this).remove();
+        });
+    })
+
 })($(document), $('.page'), $('#menu li'));
