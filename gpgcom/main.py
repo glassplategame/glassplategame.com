@@ -15,7 +15,7 @@ from flask_spirits.database import session as db_session
 
 from gpgcom.assets import js_public, css_public, js_admin, css_admin
 from gpgcom.controllers import admin
-from gpgcom.forms import GameForm
+from gpgcom.forms import GameForm, ContactForm
 from gpgcom.models import Game
 
 
@@ -106,7 +106,29 @@ def index(path=None):
     # Public template variables
     jinja_var = dict(
         page=path[0] if path[0] in pages else 'home',
+        contact_form=ContactForm(prefix='contact'),
         game_form=GameForm(prefix='game'),
         games=Game.current_playings())
 
     return render_template('index.jinja', **jinja_var)
+
+@app.route('/contact', methods=['POST'])
+def contact():
+    form = ContactForm(request.form, prefix='contact_')
+    if not form.validate():
+        flash('Failed to send message', 'alert')
+        errors = {}
+        for error in form.errors:
+            errors['contact_' + error] = form.errors[error]
+        session['contact_form_errors'] = errors
+        return redirect('/contact')
+    
+    data = (form.data['name'], form.data['email'], form.data['message'])
+    msg = Message('New Message from glassplategame.com',
+        sender=app.config['MAIL_DEFAULT_SENDER'],
+        recipients=app.config['MAIL_CONTACT'],
+        html="From: %s<br/>Email: %s<br/>Message: %s<br/>" % data,
+        body="From: %s\r\nEmail: %s\r\nMessage: %s\r\n" % data)
+    mail.send(msg)
+    flash('Message sent successfully!', 'alert')
+    return redirect('/')
