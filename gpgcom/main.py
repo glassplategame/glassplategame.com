@@ -1,7 +1,11 @@
+from datetime import datetime as dt
+
 from flask import g, Flask, render_template, session, request, redirect, \
     current_app, flash, url_for, abort, Markup
 from flask.ext.assets import Environment
 from flask.ext.restless import APIManager
+from flask.ext.restless import ProcessingException
+from flask.ext.login import current_user
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf.csrf import CsrfProtect
 
@@ -41,8 +45,33 @@ assets.register('css_public', css_public)
 assets.register('js_admin', js_admin)
 assets.register('css_admin', css_admin)
 
+# API
+def check_api_auth(**kw):
+    if not current_user.is_authenticated():
+        raise ProcessingException(description='Not authenticated!', code=401)
+    return True
+
+def post_get_single(result=None, **kw):
+    if result:
+        result['start'] = dt.strptime(result['start'], '%Y-%m-%dT%H:%M:%S') \
+                            .strftime('%m/%d/%Y %H:%M:%S')
+        if result['end']:
+            result['end'] = dt.strptime(result['end'], '%Y-%m-%dT%H:%M:%S') \
+                              .strftime('%m/%d/%Y %H:%M:%S')
+
 restless = APIManager(app, session=db_session)
-restless.create_api(Game, methods=['GET', 'POST', 'DELETE', 'PATCH'])
+restless.create_api(Game, 
+                    methods=['GET', 'POST', 'DELETE', 'PATCH'],
+                    preprocessors=dict(
+                        GET_SINGLE=[check_api_auth],
+                        GET_MANY=[check_api_auth],
+                        PATCH_SINGLE=[check_api_auth],
+                        POST_SINGLE=[check_api_auth]
+                    ),
+                    postprocessors=dict(
+                        GET_SINGLE=[post_get_single]
+                        )
+                    )
 
 @app.template_global()
 def get_page_div(page, request_page, *args):
