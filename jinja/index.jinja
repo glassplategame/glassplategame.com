@@ -552,7 +552,15 @@
         </div>
        
         {{ get_page_div("contact", page) }}
-
+          <div class="page-box">
+            <h1 class="text-center">Contact Form</h1>
+            <form method="post" action="{{ url_for('contact') }}" class="form-horizontal
+            ">{{ render_form(contact_form) }}
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+            </form>
+          </div>
         </div>
 
         {{ get_page_div("links", page) }}
