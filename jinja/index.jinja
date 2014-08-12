@@ -5,15 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>The Glass Plate Game</title>
+  <link href="/static/fonts/old_london/old_london.css" type="text/css" rel="stylesheet" />
   {% assets "css_public" %}
   <link href="{{ ASSET_URL }}" type="text/css" rel="stylesheet" />
   {% endassets %}
 </head>
 <body>
+  {% from "spirits/form.jinja" import render_form %}
   <div id="wrapper" class="container">
     <div id="header" class="row">
       <div class="gpg-red-box col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 text-right">
         <img src="/static/images/header.png" class="pull-left" />
+        <h1 class="the">The</h1>
         <h1>Glass Plate Game</h1>
         <div>A Cooperative Thinking Game</div>
       </div>
