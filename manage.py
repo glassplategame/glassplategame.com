@@ -2,7 +2,7 @@
 from flask.ext.script import Manager
 from flask_spirits.manage import user
 
-from gpgcom.main import app
+from glassplategame.main import app
 
 
 manager = Manager(app)

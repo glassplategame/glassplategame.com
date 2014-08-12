@@ -4,7 +4,7 @@ from wtforms.fields import TextAreaField
 from wtforms.validators import DataRequired
 from wtforms_alchemy import ModelForm
 
-from gpgcom.models import Game
+from glassplategame.models import Game
 
 
 class GameForm(ModelForm):

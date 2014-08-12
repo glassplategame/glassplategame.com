@@ -14,10 +14,10 @@ from flask_spirits import FlaskSpirits
 from flask_spirits.controllers import user
 from flask_spirits.database import session as db_session
 
-from gpgcom.assets import js_public, css_public, js_admin, css_admin
-from gpgcom.controllers import admin
-from gpgcom.forms import GameForm, ContactForm
-from gpgcom.models import Game
+from glassplategame.assets import js_public, css_public, js_admin, css_admin
+from glassplategame.controllers import admin
+from glassplategame.forms import GameForm, ContactForm
+from glassplategame.models import Game
 
 
 # Create Flask Instance

@@ -4,7 +4,7 @@ from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
 
 from flask_spirits.database import Model
-from gpgcom.models import Game
+from glassplategame.models import Game
 
 from config import DATABASE_URL
 
@@ -41,7 +41,7 @@ def run_migrations_offline():
     script output.
 
     """
-    context.configure(url=DATABASE_URL, version_table='gpgcom_version')
+    context.configure(url=DATABASE_URL, version_table='glassplategame_version')
 
     with context.begin_transaction():
         context.run_migrations()
@@ -61,7 +61,7 @@ def run_migrations_online():
     context.configure(
                 connection=connection,
                 target_metadata=target_metadata,
-                version_table='gpgcom_version'
+                version_table='glassplategame_version'
                 )
 
     try:
