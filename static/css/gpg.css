@@ -28,17 +28,26 @@ h1, h2 {
 /** Header **/
 #header {
     position: relative;
+    text-shadow: 1px 2px 2px #000;
 }
 #header h1 {
     margin-bottom: 0;
+    margin-top: 0;
+    font-size: 56px;
+}
+#header h1.the {
+    position: absolute;
+    left: 123px;
+    top: 0;
+    font-size: 33px;
 }
 #header .gpg-red-box {
-
+    box-shadow: 1px 3px 7px #000;
 }
 #header img {
     position: absolute;
     left: 0px;
-    height: 165px;
+    height: 139px;
 }
 #welcome_admin {
     position: absolute;
