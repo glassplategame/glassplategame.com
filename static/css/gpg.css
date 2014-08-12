@@ -22,7 +22,9 @@ body {
     border-radius: 2px;
 }
 
-
+h1, h2 {
+    font-family: 'Old London';
+}
 /** Header **/
 #header {
     position: relative;
