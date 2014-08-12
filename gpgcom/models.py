@@ -27,5 +27,5 @@ class Game(Model):
 
     @classmethod
     def current_playings(cls):
-        tomorrow = dt.datetime.now() + dt.timedelta(days=1)
-        return cls.query.filter(cls.start > tomorrow).all()
+        yesterday = dt.datetime.now() + dt.timedelta(days=-1)
+        return cls.query.filter(cls.start >= yesterday).all()
