@@ -110,9 +110,14 @@ def index(path=None):
     # Public template variables
     jinja_var = dict(
         page=path[0] if path[0] in pages else 'home',
-        contact_form=ContactForm(prefix='contact'),
+        contact_form=ContactForm(prefix='contact_'),
         game_form=GameForm(prefix='game'),
         games=Game.current_playings())
+
+    # Check for contact form submission errors
+    if 'contact_form_errors' in session:
+        jinja_var['contact_form']._errors = session.pop('contact_form_errors')
+        print jinja_var['contact_form']._errors
 
     return render_template('index.jinja', **jinja_var)
 
