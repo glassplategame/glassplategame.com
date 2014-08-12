@@ -3,9 +3,10 @@ from datetime import datetime as dt
 from flask import g, Flask, render_template, session, request, redirect, \
     current_app, flash, url_for, abort, Markup
 from flask.ext.assets import Environment
+from flask.ext.login import current_user
+from flask.ext.mail import Message, Mail
 from flask.ext.restless import APIManager
 from flask.ext.restless import ProcessingException
-from flask.ext.login import current_user
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf.csrf import CsrfProtect
 
@@ -37,6 +38,9 @@ toolbar = DebugToolbarExtension(app)
 # Set up CSRF protection
 csrf = CsrfProtect()
 csrf.init_app(app)
+
+# Set up Mail
+mail = Mail(app)
 
 # Set up JS/CSS assets
 assets = Environment(app)    
