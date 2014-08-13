@@ -10,7 +10,7 @@ from flask.ext.restless import ProcessingException
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf.csrf import CsrfProtect
 
-from flask_spirits import FlaskSpirits
+from flask_spirits import FlaskSpirits, SimpleMultiDict
 from flask_spirits.controllers import user
 from flask_spirits.database import session as db_session
 
@@ -116,8 +116,9 @@ def index(path=None):
 
     # Check for contact form submission errors
     if 'contact_form_errors' in session:
+        jinja_var['contact_form'] = ContactForm(SimpleMultiDict(session.pop('contact_form_data')),
+                                                prefix='contact_')
         jinja_var['contact_form']._errors = session.pop('contact_form_errors')
-        print jinja_var['contact_form']._errors
 
     return render_template('index.jinja', **jinja_var)
 
@@ -129,9 +130,9 @@ def contact():
         errors = {}
         for error in form.errors:
             errors['contact_' + error] = form.errors[error]
+        session['contact_form_data'] = request.form
         session['contact_form_errors'] = errors
         return redirect('/contact')
-    
     data = (form.data['name'], form.data['email'], form.data['message'])
     msg = Message('New Message from glassplategame.com',
         sender=app.config['MAIL_DEFAULT_SENDER'],
