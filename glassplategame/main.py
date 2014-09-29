@@ -62,6 +62,14 @@ def post_get_single(result=None, **kw):
         if result['end']:
             result['end'] = dt.strptime(result['end'], '%Y-%m-%dT%H:%M:%S') \
                               .strftime('%m/%d/%Y %H:%M:%S')
+        result['html'] = render_template('parts/game.jinja', 
+                            game=Game.get(result['id']))
+
+def post_submit_single(result=None, **kw):
+    if result:
+        result['html'] = render_template('parts/game.jinja', 
+                            game=Game.get(result['id']))
+
 
 restless = APIManager(app, session=db_session)
 restless.create_api(Game, 
@@ -73,7 +81,9 @@ restless.create_api(Game,
                         POST_SINGLE=[check_api_auth]
                     ),
                     postprocessors=dict(
-                        GET_SINGLE=[post_get_single]
+                        GET_SINGLE=[post_get_single],
+                        POST_SINGLE=[post_submit_single],
+                        PATCH_SINGLE=[post_submit_single]
                         )
                     )
 
