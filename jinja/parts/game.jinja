@@ -1,0 +1,18 @@
+<div class="game" data-start-date="{{ game.start.strftime('%s') }}">
+    {% if current_user.is_authenticated() %}
+        <div class="text-right">
+            <div class="btn btn-primary" data-api-patch="game" data-id="{{ game.id }}">Edit Game</div>
+        </div>
+    {% endif %}
+    <div>{% if game.location_one %}{{ game.location_one }},{% endif %} {{ game.start.strftime('%A, %B %d') }}</div>
+    <div>{{ game.format_start_time() }}{% if game.location_two %}, {{ location_two }}{% endif %}</div> 
+    {% if game.title %}
+        <div><strong>Title: </strong> {{ game.title }}</div>
+    {% endif %}
+    {% if game.theme %}
+        <div><strong>Theme: </strong> {{ game.theme }} </div>
+    {% endif %}
+    {% if game.description %}
+        <div><strong>Description: </strong> {{ game.description }}</div>
+    {% endif %}
+</div>
